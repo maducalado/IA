@@ -1,0 +1,35 @@
+/* 6. Declaração das variáveis globais com as cores do protótipo */
+:root {
+    --cor-fundo: #01080E;
+    --cor-principal: #0B0D20;
+    --cor-secundaria: #212333;
+    --cor-destaque: #2BDEFD;
+    --cor-texto: #D7F9FF;
+}
+
+/* 7 a 11. Configurações gerais da página inteira (body) */
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0; /* Adicionado por segurança para remover margens padrões do navegador */
+    font-family: sans-serif; /* Torna a leitura mais limpa e moderna */
+}
+
+
+.caixa-principal {
+    background-color: var(--cor-principal);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px; 
+}
+
+
+h1 {
+    color: var(--cor-destaque);
+}
