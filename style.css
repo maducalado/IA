@@ -1,4 +1,4 @@
-/* 6. Declaração das variáveis globais com as cores do protótipo */
+/* Declaração das variáveis globais com as cores do protótipo */
 :root {
     --cor-fundo: #01080E;
     --cor-principal: #0B0D20;
@@ -7,7 +7,7 @@
     --cor-texto: #D7F9FF;
 }
 
-/* 7 a 11. Configurações gerais da página inteira (body) */
+/* Configurações gerais da página inteira */
 body {
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
@@ -15,10 +15,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: 0; /* Adicionado por segurança para remover margens padrões do navegador */
-    font-family: sans-serif; /* Torna a leitura mais limpa e moderna */
+    margin: 0;
+    font-family: sans-serif;
 }
-
 
 .caixa-principal {
     background-color: var(--cor-principal);
@@ -29,7 +28,22 @@ body {
     border-radius: 8px; 
 }
 
-
 h1 {
     color: var(--cor-destaque);
+}
+
+/* Passos 5, 6 e 9: Estilização padrão da tag button */
+button {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    transition: background-color 0.3s;
+}
+
+/* Passos 7 e 8: Efeito ao passar o mouse por cima (hover) */
+button:hover {
+    background-color: var(--cor-destaque);
+    color: var(--cor-principal);
 }

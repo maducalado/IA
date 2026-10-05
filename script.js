@@ -5,10 +5,10 @@ const caixaAlternativas = document.querySelector(".caixa-alternativas");
 const caixaResultado = document.querySelector(".caixa-resultado");
 const textoResultado = document.querySelector(".texto-resultado");
 
-// Estrutura de dados para as perguntas atualizada com objetos (texto e afirmacao)
+// Estrutura de dados das perguntas com as afirmações completas
 const perguntas = [
     {
-        enunciado: "Assim que saiu da escola você se depara com uma nova tecnologia, um chat que consegue responder todas as dúvidas que uma pessoa pode ter, ele também gera imagens e áudios hiper-realistas. Qual o primeiro pensamento?",
+        enunciado: "Assim que saiu da escola, você se depara com uma nova tecnologia: um chat que consegue responder a todas as dúvidas que uma pessoa pode ter. Além disso, o chat também gera imagens e áudios hiper-realistas. Qual o seu primeiro pensamento?",
         alternativas: [
             {
                 texto: "Isso é assustador!",
@@ -60,7 +60,7 @@ const perguntas = [
         ]
     },
     {
-        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz? ",
+        enunciado: "Você tem um trabalho em grupo de biologia para entregar na semana seguinte, o andamento do trabalho está um pouco atrasado e uma pessoa do seu grupo decidiu fazer com ajuda da IA. O problema é que o trabalho está totalmente igual ao do chat. O que você faz?",
         alternativas: [
             {
                 texto: "Escrever comandos para o chat é uma forma de contribuir com o trabalho, por isso não é um problema utilizar o texto inteiro.",
@@ -77,49 +77,40 @@ const perguntas = [
 // Variáveis de estado do jogo
 let atual = 0;
 let perguntaAtual;
-let historiaFinal = ""; // Passo 9: Variável para acumular o texto final
+let historiaFinal = "";
 
 function mostraPergunta() {
-    // Verifica se chegou ao fim das perguntas
     if (atual >= perguntas.length) {
         mostraResultado();
         return;
     }
     perguntaAtual = perguntas[atual];
     caixaPerguntas.textContent = perguntaAtual.enunciado;
-    caixaAlternativas.textContent = ""; // Limpa os botões anteriores da tela
+    caixaAlternativas.textContent = "";
     mostraAlternativas();
 }
 
 function mostraAlternativas() {
     for (const alternativa of perguntaAtual.alternativas) {
         const botaoAlternativas = document.createElement("button");
-        botaoAlternativas.textContent = alternativa.texto; // Exibe o texto da alternativa
-        
-        // Passo 7: Arrow function direcionando para a função respostaSelecionada passando o parâmetro
+        botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
-        
         caixaAlternativas.appendChild(botaoAlternativas);
     }
 }
 
-// Passo 8 e 10: Função criada separadamente para processar a escolha
 function respostaSelecionada(opcaoSelecionada) {
     const afirmacoes = opcaoSelecionada.afirmacao;
-    
-    // Nota: Como mencionado no passo 11, usar "=" substitui a história a cada rodada. 
-    // Se quiser acumular o texto corrido no futuro, você mudará isso para: historiaFinal += afirmacoes + " ";
-    historiaFinal = afirmacoes; 
-    
+    historiaFinal += afirmacoes + " ";
     atual++;
     mostraPergunta();
 }
 
 function mostraResultado() {
-    caixaPerguntas.textContent = "Fim da jornada!";
+    caixaPerguntas.textContent = "Em 2049...";
     textoResultado.textContent = historiaFinal;
-    caixaAlternativas.textContent = ""; // Garante que os botões somem no final
+    caixaAlternativas.textContent = "";
 }
 
-// Inicia o questionário na primeira execução
+// Inicia o jogo
 mostraPergunta();
